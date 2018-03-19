@@ -1,8 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom'; 
-import { Provider } from 'react-redux';
-import { BrowserRouter, Route} from 'react-router-dom';
-import Routes from './routes';
-import Home from './pages/home';
+//import { Provider } from 'react-redux';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import routes from './routes';
+import Home from './pages/home/index';
+import Order from './pages/order/index';
+import User from './pages/User/index';
+import './css/all.styl';
+
 const id = document.getElementById('app');
-ReactDOM.render(<BrowserRouter><Route path="/" component={Home} /></BrowserRouter>, id);
+
+ReactDOM.render((
+    <BrowserRouter>
+        <div>
+            <Route path='/home' component={Home}/>
+            <Route path='/order' component={Order}/>
+            <Route path='/user' component={User}/>
+        </div>
+    </BrowserRouter>
+), id);

@@ -2,6 +2,7 @@ var path = require('path')
 var config = require('../config')
 var utils = require('./utils')
 var projectRoot = path.resolve(__dirname, '../')
+var ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 var env = process.env.NODE_ENV
     // check env & config/index.js to decide weither to enable CSS Sourcemaps for the
@@ -12,7 +13,18 @@ var useCssSourceMap = cssSourceMapDev || cssSourceMapProd
 
 module.exports = {
     entry: {
-        app: './src/main.js'
+        app: './src/main.js',
+        vendor: [
+          'history',
+          'lodash',
+          'react',
+          'react-dom',
+          'react-redux',
+          'react-router',
+          'react-router-redux',
+          'redux',
+          'redux-thunk'
+        ]
     },
     output: {
         path: config.build.assetsRoot,
@@ -20,7 +32,7 @@ module.exports = {
         filename: '[name].js'
     },
     resolve: {
-        extensions: ['', '.js', '.less', '.css', '.scss'],
+        extensions: ['', '.js', '.less', '.css', '.scss', 'stylus'],
         fallback: [path.join(__dirname, '../node_modules')],
         alias: {
             'src': path.resolve(__dirname, '../src'),
@@ -54,7 +66,7 @@ module.exports = {
                 limit: 10000,
                 name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
             }
-        }]
+        }],
     },
     vue: {
         loaders: utils.cssLoaders({

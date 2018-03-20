@@ -1,21 +1,26 @@
 import { ADD_TODO } from '../actions/types';
 import { combineReducers } from 'redux';
 
+let defaultState = {
+    todos: [{
+        text: 'one',
+        completed: false,
+    }],
+};
 
-function todos(state = [], action) {
+const todos = (state = defaultState, action) => {
     switch (action.type) {
         case ADD_TODO:
             return Object.assign({}, state, {
                 todos: [
-                    ...state.todos,
-                    {
+                    ...state.todos,{
                         text: action.text,
                         completed: false,
                     }
-                ]
+                ],
             })
         default:
-            return false
+            return state
     }
 }
 let todoApp = combineReducers({

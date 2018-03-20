@@ -1,27 +1,26 @@
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { addTodo } from '../../actions/index';
 import Content from 'components/content';
 
 class AppHome extends Component {
-    state = {
 
-    }
     render() {
+        const {todos, onTodoClick} = this.props;
+        const listItems = todos.todos.map((item, key) => {
+            return <li key={key}>{item.text}</li>
+        });
         return (
             <Content>
-                <p>this is home pages</p>
-                <p></p>
-                <button onclick={() => onTodoClick('two')}>add todo</button>  
+                <ul>{listItems}</ul>
+                <button onClick={() => onTodoClick('two')}>add todo</button>  
             </Content>
         )
     }
 }
 const mapStateToProps = state => {
     return {
-        todos: [{
-            text: 'one',
-            completed: true,
-        }]
+        ...state,
     }
 };
 const mapDispatchToProps = dispatch => {

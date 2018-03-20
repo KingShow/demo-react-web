@@ -23,8 +23,8 @@ class Dishs extends Component {
                 count: 20,
             }
         };
-        let dishsPromise = ajax(data.type, data.url, data.parmas);
-        console.log(dishsPromise);
+        //let dishsPromise = ajax(data.type, data.url, data.parmas);
+        //console.log(dishsPromise);
         
     }
 

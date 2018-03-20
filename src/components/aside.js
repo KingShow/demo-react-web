@@ -8,6 +8,7 @@ class Aside extends Component {
                 <li><NavLink to='/home'>首页</NavLink></li>
                 <li><NavLink to='/order'>订单</NavLink></li>
                 <li><NavLink to='/user'>用户中心</NavLink></li>
+                <li><NavLink to='/dishs'>我的菜品</NavLink></li>
              </ul></div>
         )
     }

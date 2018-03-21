@@ -8,6 +8,7 @@ import Order from './pages/order/index';
 import User from './pages/user/index';
 import Dishs from './pages/dishs/index';
 import './css/all.styl';
+import 'antd/dist/antd.css';
 import './utils/rem';
 
 const id = document.getElementById('app');

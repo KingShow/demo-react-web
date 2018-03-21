@@ -7,7 +7,7 @@ import Content from 'components/content';
 
 class AppHome extends Component {
     static propTypes = {
-        todos: PropTypes.object.isRequired,
+        appStates: PropTypes.object.isRequired,
         addTodo: PropTypes.func.isRequired,
     }
     state = {
@@ -22,8 +22,8 @@ class AppHome extends Component {
         this.props.addTodo(this.state.input_text);
     }
     render() {
-        const {todos} = this.props;
-        const listItems = todos.todos.map((item, key) => {
+        const {appStates} = this.props;
+        const listItems = appStates.todos.map((item, key) => {
             return <li key={key}>{item.text}</li>
         });
         return (

@@ -1,4 +1,4 @@
-import { ADD_TODO } from '../actions/types';
+import { ADD_TODO, SET_MENU_CURRENT } from '../actions/types';
 import { combineReducers } from 'redux';
 
 let defaultState = {
@@ -6,9 +6,10 @@ let defaultState = {
         text: 'one',
         completed: false,
     }],
+    menuCurrent: '1',
 };
 
-const todos = (state = defaultState, action) => {
+const appStates = (state = defaultState, action) => {
     switch (action.type) {
         case ADD_TODO:
             return Object.assign({}, state, {
@@ -19,12 +20,18 @@ const todos = (state = defaultState, action) => {
                     }
                 ],
             })
+        case SET_MENU_CURRENT:
+            return Object.assign({}, state, {
+                todos: state.todos,
+                menuCurrent: action.key,
+            })
         default:
             return state
     }
 }
-let todoApp = combineReducers({
-    todos
+
+let appReducers = combineReducers({
+    appStates
 });
 
-export default todoApp;
+export default appReducers;
